@@ -3,7 +3,6 @@ package model;
 import java.util.UUID;
 
 public abstract class AbstractBaseEntity {
-    public static final int START_SEQ = 100000;
 
     protected UUID id;
 

@@ -11,15 +11,8 @@ public class Payment extends AbstractBaseEntity {
 
     private BigDecimal amount;
 
-    public Payment(int idSender, int idRecipient, int i) {
-    }
-
     public Payment(Integer idSender, Integer idRecipient, BigDecimal amount) {
         this(null, idSender, idRecipient, amount);
-    }
-
-    public Payment(Payment u) {
-        this(u.getId(), u.getIdSender(), u.getIdRecipient(), u.getAmount());
     }
 
     public Payment(UUID id, Integer idSender, Integer idRecipient, BigDecimal amount) {

@@ -25,8 +25,7 @@ public class PaymentService {
     }
 
     public BigDecimal getSum(int id) {
-        BigDecimal sum = repository.getSumBySender(id);
-        return sum;
+        return repository.getSumBySender(id);
     }
 
     public List<Integer> getIdSenders() {
