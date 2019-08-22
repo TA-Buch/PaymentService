@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
+<!---->
+    <bean id="dataSource1"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/bucket_1"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+
+    <bean id="jdbcTemplate1" class="org.springframework.jdbc.core.JdbcTemplate">
+          <constructor-arg ref="dataSource1"/>
+    </bean>
+
+    <bean id="namedJdbcTemplate1" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+            <constructor-arg ref="jdbcTemplate1"/>
+    </bean>
+
+<!---->
+    <bean id="dataSource2"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/bucket_2"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="postgres"/>
+    </bean>
+
+    <bean id="jdbcTemplate2" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource2"/>
+    </bean>
+
+    <bean id="namedJdbcTemplate2" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="jdbcTemplate2"/>
+    </bean>
+
+<!---->
+    <bean id="dataSource3"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/bucket_3"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="postgres"/>
+    </bean>
+
+    <bean id="jdbcTemplate3" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource3"/>
+    </bean>
+
+    <bean id="namedJdbcTemplate3" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="jdbcTemplate3"/>
+    </bean>
+</beans>
